@@ -29,15 +29,6 @@ export function MainScreen() {
     layout: {
       orientation: ['portrait']
     },
-    // bottomTabs: {
-    //   titleDisplayMode: 'alwaysShow'
-    // },
-    // bottomTab: {
-    //   textColor: 'gray',
-    //   selectedTextColor: 'black',
-    //   iconColor: 'gray',
-    //   selectedIconColor: 'black',
-    // }
   });
 
   Navigation.setRoot({
@@ -81,11 +72,17 @@ export function pushTabBasedApp() {
         },
         center: {
           bottomTabs: {
+            options: {
+              bottomTabs: {
+                  titleDisplayMode: 'alwaysShow',
+              },
+          },
             children: [{
               stack: {
                 children: [{
                   component: {
                     name: TAB1_SCREEN,
+                    id: 'home',
                     options: {
                       topBar: {
                         title: {
@@ -100,7 +97,7 @@ export function pushTabBasedApp() {
                           {
                             id: 'sidebar_btn',
                             icon: require('assets/icons/ic_tab_menu.png'),
-                            color: 'black'
+                            color: 'black',
                           }
                         ],
                         rightButtons: [
@@ -124,6 +121,7 @@ export function pushTabBasedApp() {
                 children: [{
                   component: {
                     name: TAB2_SCREEN,
+                    id: 'setting',
                     options: {
                       topBar: {
                         title: {
@@ -155,7 +153,13 @@ export function pushTabBasedApp() {
               }
             }]
           }
+        },
+        options: {
+          bottomTab: {
+              text: 'SideMenu',
+              testID: 'SIDE_MENU_TAB'
         }
+      }
       },
     }
   });
